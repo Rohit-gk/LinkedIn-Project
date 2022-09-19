@@ -45,7 +45,7 @@
   }
 
   /* profile card css */
-  
+
   .dropbtn {
     cursor: pointer;
     color: white;
@@ -80,4 +80,6 @@
   
   .dropdown:hover .dropdown-content {display: block;}
   
- 
+ .gradient{
+  background-image: linear-gradient(blue,skyblue)
+ }

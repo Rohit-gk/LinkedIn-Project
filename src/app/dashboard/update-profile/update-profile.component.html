@@ -13,7 +13,7 @@
 
                 <div class="form-group col-6">
                     <input type="text" formControlName="lastname" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" placeholder="Enter first name" />
+                        [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" placeholder="Enter last name" />
                     <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                         <div *ngIf="f.lastname.errors.required">Last Name is required</div>
                         <div *ngIf="f.lastname.errors.pattern">Only String accept here</div>
@@ -91,11 +91,10 @@
             </div>
 
             <div class="form-row">
-               <button class="btn btn-primary mr-2" style="width: 20%;">Submit</button>
-               <button class="btn btn-danger" style="width: 20%;">Cancel</button>
+                <button class="btn btn-success mr-2" (click)="goProfilePage()" style="width: 20%;">Back</button>
+                <button class="btn btn-danger mr-2" style="width: 20%;">Cancel</button>
+                <button class="btn btn-primary" style="width: 20%;">Submit</button>
             </div>
-
-            
 
         </form>
     </div>

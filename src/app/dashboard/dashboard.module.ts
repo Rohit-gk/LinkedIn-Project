@@ -11,6 +11,11 @@ import { JobsComponent } from './jobs/jobs.component';
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { PostComponent } from './post/post.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewAllPostsComponent } from './view-all-posts/view-all-posts.component';
+import { AllPostsComponent } from './all-posts/all-posts.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { FormsModule } from '@angular/forms';
+import { ProfileListComponent } from './profile-list/profile-list.component';
 
 
 @NgModule({
@@ -22,12 +27,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReuestsComponent,
     JobsComponent,
     MynetworkComponent,
-    PostComponent
+    PostComponent,
+    ViewAllPostsComponent,
+    AllPostsComponent,
+    CreatePostComponent,
+    ProfileListComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

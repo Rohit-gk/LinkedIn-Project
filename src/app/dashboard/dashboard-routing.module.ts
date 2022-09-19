@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProfileComponent } from './add-profile/add-profile.component';
+import { AllPostsComponent } from './all-posts/all-posts.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 import { DashboardComponent } from './dashboard.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { PostComponent } from './post/post.component';
+import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReuestsComponent } from './reuests/reuests.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ViewAllPostsComponent } from './view-all-posts/view-all-posts.component';
 
 const routes: Routes = [
   {
@@ -20,7 +24,12 @@ const routes: Routes = [
       { path: 'jobs', component: JobsComponent },
       { path: 'posts', component: PostComponent },
       { path: 'mynetwork', component: MynetworkComponent },
+      { path: 'viewallposts', component: ViewAllPostsComponent },
+      { path: 'allposts', component: AllPostsComponent },
+      { path: 'createpost', component: CreatePostComponent },
+      { path: 'profilelist', component: ProfileListComponent },
     ]
+    
   }
 ];
 

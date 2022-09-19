@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-profile',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UpdateProfileComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private router:Router) { }
 
   registerForm: any = FormGroup;
   submitted = false;
@@ -29,5 +30,9 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   get f() { return this.registerForm.controls; }
+
+  goProfilePage(){
+    this.router.navigate(['dashboard/profile'])
+  }
 }
 

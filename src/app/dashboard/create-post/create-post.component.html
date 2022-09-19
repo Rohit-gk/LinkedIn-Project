@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+    
+        <div class="col-6">
+            <h1>Add Post</h1>
+    
+            <form #form="ngForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="title" [(ngModel)]="post.title" placeholder="Enter title">
+                </div>
+                <div class="mb-3">
+                    <textarea type="text" class="form-control" name="content" [(ngModel)]="post.content" placeholder="Enter Content"></textarea>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="summary" [(ngModel)]="post.summary" placeholder="Enter Summary">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="imageUrl" [(ngModel)]="post.imageUrl" placeholder="Enter Imageurl">
+                </div>
+                
+                <div class="mb-3">
+                    <input type="date" class="form-control" name="author" [(ngModel)]="post.author" placeholder="Enter Date">
+                </div>
+                
+                <button class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-success" (click)="allPostPage()">View All Posts</button>
+            </form><br>
+        </div>
+    
+        <div class="col-3">
+    
+        </div>
+    </div>
+</div>
