@@ -10,6 +10,7 @@ import { PostComponent } from './post/post.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReuestsComponent } from './reuests/reuests.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ViewAllPostsComponent } from './view-all-posts/view-all-posts.component';
 
@@ -19,7 +20,7 @@ const routes: Routes = [
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'addprofile', component: AddProfileComponent },
-      { path: 'updateprofile', component: UpdateProfileComponent },
+      { path: 'updateprofile/:id', component: UpdateProfileComponent },
       { path: 'requests', component: ReuestsComponent },
       { path: 'jobs', component: JobsComponent },
       { path: 'posts', component: PostComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'allposts', component: AllPostsComponent },
       { path: 'createpost', component: CreatePostComponent },
       { path: 'profilelist', component: ProfileListComponent },
+      { path: 'updatepost/:id', component: UpdatePostComponent },
     ]
     
   }

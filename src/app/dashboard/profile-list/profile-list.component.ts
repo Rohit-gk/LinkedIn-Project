@@ -15,6 +15,10 @@ export class ProfileListComponent implements OnInit {
   profiles:Profile[] = [];
 
   ngOnInit(){
+   this.getProfiles();
+  }
+
+  getProfiles(){
     this.api.getAllProfiles().subscribe(
       response =>{
         this.profiles = response;
@@ -22,8 +26,8 @@ export class ProfileListComponent implements OnInit {
     )
   }
 
-  goToEditProfile(){
-    this.router.navigate(['/dashboard/updateprofile'])
+  goToEditProfile(userid:any){
+    this.router.navigate([`/dashboard/updateprofile/${userid}`])
   }
 
   deleteProfile(userid:any) {

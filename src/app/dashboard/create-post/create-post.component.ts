@@ -13,7 +13,6 @@ export class CreatePostComponent implements OnInit {
   constructor(private api:ApiService,private router:Router) { }
 
   post : AddPostRequest = {
-    // id:'',
     title:'',
     content:'',
     summary:'',
@@ -28,7 +27,7 @@ export class CreatePostComponent implements OnInit {
   onSubmit(){
     this.api.addPost(this.post).subscribe(
         data =>{
-          alert("Success");
+          this.router.navigate(['/dashboard/allposts'])
         }
     )
   }

@@ -20,7 +20,7 @@ export class PostComponent implements OnInit {
   posts : Post | undefined;
 
   ngOnInit(){
-    // this.getProfile(); 
+    this.getProfiles();
     this.getAllPosts();
   }
 
@@ -33,14 +33,17 @@ export class PostComponent implements OnInit {
     )
   }
 
-  // getProfile(){
-  //   this.api.getAllProfiles().subscribe(
-  //     response =>{
-  //       this.post = response;
-  //       this.posts = this.post[0];
-  //     }
-  //   )
-  // }
+  getProfiles(){
+    this.api.getAllProfiles().subscribe(
+      response =>{
+        this.profiles = response;
+      }
+    )
+  }
+
+  goToEditPost(id:any){
+    this.router.navigate([`/dashboard/updatepost/${id}`])
+  }
 
   goToJobPage(){
     this.router.navigate(['dashboard/jobs'])

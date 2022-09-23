@@ -20,8 +20,8 @@ export class ApiService {
 
   constructor(private http: HttpClient, private route: Router, private tokenService: TokenService) { }
 
-  login(param: string) {
-    return this.http.post<any>(
+  login(param: string):Observable<any> {
+    return this.http.post(
       `${environment.baseApiUrl}/Authenticate/login`, param)
   }
 
@@ -42,6 +42,10 @@ export class ApiService {
     );
   }
 
+  updatePost(data:any){
+    return this.http.put(`${environment.baseApiUrl}/Post`, data);
+  }
+
   deletePost(id: any): Observable<any> {
     var options = new HttpParams();
     return this.http.delete(`${environment.baseApiUrl}/Post/${id}`,)
@@ -53,16 +57,23 @@ export class ApiService {
     );
   }
 
-
   addProfile(data: any) {
     return this.http.post(
       'https://localhost:44329/api/Profile', data,
     );
   }
+  
+  updateProfile(data: any): Observable<any> {
+    return this.http.put(`${environment.baseApiUrl}/Profile`, data);
+  }
+
+  // updateProfile(data:string){
+  //   return this.http.put(`${environment.baseApiUrl}/Profile`,data);
+  // }
 
   deleteProfile(userid: any): Observable<any> {
     var options = new HttpParams();
-    return this.http.delete(`${environment.baseApiUrl}/Profile/${userid}`,)
+    return this.http.delete(`${environment.baseApiUrl}/Profile/${userid}`,);
   }
 
 }

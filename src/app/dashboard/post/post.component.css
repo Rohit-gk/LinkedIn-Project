@@ -82,7 +82,7 @@
     display: inline-block;
     padding: 8px;
     color: white;
-    background-color: #000;
+    background-color: rgb(38, 94, 247);
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -100,4 +100,9 @@
   
   button:hover, a:hover {
     opacity: 0.7;
+  }
+
+  .gradient{
+    background: linear-gradient(to bottom, #ccffff 0%, #ffffcc 100%);
+    margin-top: -25px
   }

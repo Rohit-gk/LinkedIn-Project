@@ -16,6 +16,9 @@ import { AllPostsComponent } from './all-posts/all-posts.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileListComponent } from './profile-list/profile-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { UpdatePostComponent } from './update-post/update-post.component';
 
 
 @NgModule({
@@ -31,13 +34,16 @@ import { ProfileListComponent } from './profile-list/profile-list.component';
     ViewAllPostsComponent,
     AllPostsComponent,
     CreatePostComponent,
-    ProfileListComponent
+    ProfileListComponent,
+    UpdatePostComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ]
 })
 export class DashboardModule { }

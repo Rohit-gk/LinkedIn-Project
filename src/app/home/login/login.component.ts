@@ -22,37 +22,64 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private api:ApiService,
-    private token:TokenService
+    private api: ApiService,
+    private token: TokenService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  goToDashboard(){
-    this.submitted = true;
-    this.isSignUpFailed = false;
-    // if (this.loginForm.invalid) {
-    //   return
-    // }
-    this.api.login(this.loginForm.value).subscribe(val => {
-      //  if (val.result) {
-        this.token.setToken(val.result)
-         this.isSuccessful = true;
-        setTimeout(() => {
-          this.router.navigate(['dashboard/posts'])
-        }, 2000);
-      // }
-    },
-      error => {
-        this.message = " Invalid username and password please try again...";
-        this.isSignUpFailed = true;
+  goToDashboard() {
+
+    this.api.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        localStorage.setItem("token:", res.token);
+        localStorage.setItem("role:", res.role);
+
+        let role = this.token.getRole();
+        role === 'Admin'
+          ? this.router.navigate(['admin/admindashboard'])
+          : this.router.navigate(['dashboard/posts']);
+        this.token.isLoggedIn.next(true);
       }
-    );
-   
+    })
+    console.log(this.token);
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
   }
+  
 }
+
+
+//   this.submitted = true;
+  //   this.isSignUpFailed = false;
+
+  //   this.api.login(this.loginForm.value).subscribe(val => {
+  //       this.token.setToken(val.result)
+  //        this.isSuccessful = true;
+  //       setTimeout(() => {
+  //         this.router.navigate(['dashboard/posts'])
+  //       }, 2000);
+  //   },
+  //     error => {
+  //       this.message = " Invalid username and password please try again...";
+  //       this.isSignUpFailed = true;
+  //     }
+  //   );
+  // }
+
+
+
+
+
+
+
+
+
+

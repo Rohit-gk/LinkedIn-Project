@@ -55,7 +55,7 @@
         </div>
         <div class="col-8">
             <div class="card m-3">
-                <h4 class="card-body">Add Basic Information</h4>
+                <h4 class="card-body">Add Information</h4>
                 <div class="card-body">
 
                     <form #form="ngForm" (ngSubmit)="onSubmit()">
@@ -79,7 +79,7 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="location" [(ngModel)]="profile.location"
-                                        placeholder="Enter location">
+                                        placeholder="Enter profile image url">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -132,7 +132,7 @@
                         <div class="form-row">
                             <button class="btn btn-success mr-2" (click)="goProfilePage()"
                                 style="width: 20%;">Back</button>
-                            <button class="btn btn-secondary mr-2" style="width: 20%;" routerLink="/dashboard/profilelist">View Profiles</button>
+                            <button class="btn btn-secondary mr-2" style="width: 20%;" routerLink="/dashboard/profilelist">View Profile</button>
                             <button class="btn btn-danger mr-2" style="width: 20%;">Cancel</button>
                             <button class="btn btn-primary" style="width: 20%;">Submit</button>
                         </div>
