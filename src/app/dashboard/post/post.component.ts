@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Post } from 'src/app/Models/post.models';
 import { Profile } from 'src/app/Models/view.profile.models';
 import { ApiService } from 'src/app/services/api.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-post',
@@ -11,51 +13,58 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private router:Router,private api:ApiService) { }
+  constructor(private router: Router, private api: ApiService,private toaster:NgToastService) { }
 
-  post : Post[] = [];
-  profiles : Profile[] = [];
+  post: Post[] = [];
+  profiles: Profile[] = [];
 
-  
-  posts : Post | undefined;
 
-  ngOnInit(){
+  posts: Post | undefined;
+
+  ngOnInit() {
     this.getProfiles();
     this.getAllPosts();
   }
 
-  getAllPosts(){
-    this.api.getAllPosts().subscribe(
-      response =>{
+  getAllPosts() {
+    this.api.AllPosts().subscribe(
+      response => {
         this.post = response;
         this.posts = this.post[0];
       }
     )
   }
 
-  getProfiles(){
-    this.api.getAllProfiles().subscribe(
-      response =>{
+  getProfiles() {
+    this.api.AllProfiles().subscribe(
+      response => {
         this.profiles = response;
       }
     )
   }
 
-  goToEditPost(id:any){
+  goToEditPost(id: any) {
     this.router.navigate([`/dashboard/updatepost/${id}`])
   }
 
-  goToJobPage(){
+  goToJobPage() {
     this.router.navigate(['dashboard/jobs'])
   }
 
-  addPost(){
+  addPost() {
+    // this.toaster.success({detail:'Success',summary:'This is Success', sticky:true,position:'tr'})
     this.router.navigate(['dashboard/createpost'])
   }
 
-  deletePost(id:any) {
-    if(confirm("Are you sure to delete " + id)) {
+  deletePost(id: any) {
+     {
       this.api.deletePost(id).subscribe(response => {
+        this.toaster.success({
+          summary: 'Success',
+          detail: 'Post Deleted Successfully',
+          duration: 3000,
+
+        });
         location.reload();
       })
     }

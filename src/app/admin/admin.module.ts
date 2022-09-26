@@ -8,7 +8,10 @@ import { UsersProfilesComponent } from './users-profiles/users-profiles.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AddJobComponent } from './add-job/add-job.component';
+import { JobListComponent } from './job-list/job-list.component';
 
 
 @NgModule({
@@ -16,14 +19,17 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AdminComponent,
     UsersPostComponent,
     UsersProfilesComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AddJobComponent,
+    JobListComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AdminRoutingModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

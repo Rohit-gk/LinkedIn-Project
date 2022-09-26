@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DefaultPageComponent } from './default-page.component';
+import { PublicComponent } from './public.component';
 
-describe('DefaultPageComponent', () => {
-  let component: DefaultPageComponent;
-  let fixture: ComponentFixture<DefaultPageComponent>;
+describe('PublicComponent', () => {
+  let component: PublicComponent;
+  let fixture: ComponentFixture<PublicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DefaultPageComponent ]
+      declarations: [ PublicComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DefaultPageComponent);
+    fixture = TestBed.createComponent(PublicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

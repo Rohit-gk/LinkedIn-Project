@@ -22,7 +22,7 @@ export class UsersProfilesComponent implements OnInit {
   }
 
   getProfiles(){
-    this.api.getAllProfiles().subscribe(
+    this.api.AllProfiles().subscribe(
       response =>{
         this.profiles = response;
       }

@@ -61,6 +61,7 @@
                             <h6 class="w3-opacity"></h6>
                             <input class="form-control"
                                 style="border: 1px solid gray; width: 100%;height: 40px;"
+                                [(ngModel)]="filterTerm"
                                 placeholder="Search jobs...">
                         </div>
                     </div>
@@ -69,80 +70,20 @@
 
             <div class="w3-container w3-card w3-white w3-round w3-margin">
 
-                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/incub.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
+                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px" >
+                    <div class="w3-third w3-margin-bottom" *ngFor="let job of jobs.reverse() | filter: filterTerm | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+                        <img src="{{job.organizationLogo}}" alt="" style="width:50px;height: 50px;" class="w3-hover-opacity">
                         <div class="w3-container w3-white">
-                            <p><b>IncubXperts</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Junior UX Designer/Developer</p>
+                            <p><b>{{job.organization}}</b></p>
+                            <p class="w3-opacity">{{job.date | date:'short'}}</p>
+                            <p>{{job.postion}}</p>
                             <button class="btn btn-secondary" style="width: 100%;">Apply</button>
                         </div>
                     </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/tech.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>Tech Mahindra</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Angular Frontend Developer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/tcs.jfif" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>TCS</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Project Manager/Developer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-
                 </div>
-
-
-
-
-                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/scl.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>SCL</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Junior UX Designer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/incub.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>IncubXperts</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Junior UX Designer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/scl.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>SCL</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Junior UX Designer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
+                <pagination-controls class="pagination" (pageChange)="pageChangeEvent($event)"></pagination-controls>
             </div>
+            
         </div>
 
         <!-- 3rd part start -->
@@ -188,3 +129,37 @@
 
     </div>
 </div>
+
+
+
+<!-- <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                    <div class="w3-third w3-margin-bottom">
+                        <img src="assets/scl.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
+                        <div class="w3-container w3-white">
+                            <p><b>SCL</b></p>
+                            <p class="w3-opacity">23-09-2022</p>
+                            <p>Junior UX Designer</p>
+                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
+                        </div>
+                    </div>
+
+                    <div class="w3-third w3-margin-bottom">
+                        <img src="assets/incub.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
+                        <div class="w3-container w3-white">
+                            <p><b>IncubXperts</b></p>
+                            <p class="w3-opacity">23-09-2022</p>
+                            <p>Junior UX Designer</p>
+                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
+                        </div>
+                    </div>
+
+                    <div class="w3-third w3-margin-bottom">
+                        <img src="assets/scl.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
+                        <div class="w3-container w3-white">
+                            <p><b>SCL</b></p>
+                            <p class="w3-opacity">23-09-2022</p>
+                            <p>Junior UX Designer</p>
+                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
+                        </div>
+                    </div>
+                </div> -->

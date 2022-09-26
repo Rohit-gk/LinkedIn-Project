@@ -30,7 +30,7 @@ export class UpdatePostComponent implements OnInit {
     });
     
 
-    this.api.getAllPosts().subscribe((getPostdata) =>{
+    this.api.AllPosts().subscribe((getPostdata) =>{
       this.postList = getPostdata;
 
       for (let i=0; i< this.postList.length; i++){

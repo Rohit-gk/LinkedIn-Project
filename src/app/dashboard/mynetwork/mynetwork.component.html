@@ -8,17 +8,17 @@
                 <div class="row">
                     <div class="col-6">
                         <hr>
-                        <p style="margin-left: 15px;">87</p>
+                        <p class="numbers">87</p>
                         <hr>
-                        <p style="margin-left: 15px;">987</p>
+                        <p class="numbers">987</p>
                         <hr>
-                        <p style="margin-left: 15px;">237</p>
+                        <p class="numbers">237</p>
                         <hr>
-                        <p style="margin-left: 15px;">4</p>
+                        <p class="numbers">4</p>
                         <hr>
-                        <p style="margin-left: 15px;">86</p>
+                        <p class="numbers">86</p>
                         <hr>
-                        <p style="margin-left: 15px;">3</p>
+                        <p class="numbers">3</p>
                     </div>
                     <div class="col-6">
                         <hr>
@@ -43,81 +43,49 @@
 
         <div class="w3-col m9">
 
+            <div class="w3-container w3-card w3-white w3-round w3-margin">
+                <p class="myNetwork">Invitations</p>
+                <div class="w3-row-padding w3-padding-32" >
+                    <div class="w3-row-padding w3-padding-32" style="margin:0 -16px" >
+                        <div class="w3-third w3-margin-bottom" *ngFor="let request of myrequest">
+                            <img src="assets/pro1.jfif" alt="New York" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>{{request.name}}</b></p>
+                                <p>{{request.postion}}</p>
+                                <button class="btn btn-success mr-1" style="width: 49%;" 
+                                    (click)="AcceptOrRejectRequest(request.requestId,'true')">Accept
+                                </button>
+                                <button class="btn btn-danger" style="width: 49%;"
+                                    (click)="AcceptOrRejectRequest(request.requestId,'false')">Reject
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
 
             <div class="w3-container w3-card w3-white w3-round w3-margin">
                 <p class="myNetwork">More Suggestions for you</p>
-                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/profile1.jfif" alt="New York" style="width:100%;height: 100px;"
-                            class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>Ajinkya Shinde</b></p>
-                            <p>Junior CRM Developer</p>
-                            <button class="btn btn-primary" style="width: 100%;"><i
-                                    class="fa fa-user"></i>&nbsp;Follow</button>
+                <div class="w3-row-padding w3-padding-32" >
+                    <div class="w3-row-padding w3-padding-32" style="margin:0 -16px" >
+                        <div class="w3-third w3-margin-bottom" *ngFor="let connection of connections">
+                            <img src="assets/pro1.jfif" alt="New York" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>{{connection.name}}</b></p>
+                                <p>{{connection.postion}}</p>
+                                <button class="btn btn-primary" style="width: 100%;"
+                                    (click)="SendFriendRequests(connection.userId)"><i
+                                        class="fa fa-user"></i>&nbsp;Follow</button>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/profile3.jfif" alt="New York" style="width:100%;height: 100px;"
-                            class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>Raj chaudhary</b></p>
-                            <p>Angular Developer</p>
-                            <button class="btn btn-primary" style="width: 100%;"><i
-                                    class="fa fa-user"></i>&nbsp;Follow</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/profile4.jfif" alt="New York" style="width:100%;height: 100px;"
-                            class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>Nitin Thate</b></p>
-                            <p>Junior CRM Developer</p>
-                            <button class="btn btn-primary" style="width: 100%;"><i
-                                    class="fa fa-user"></i>&nbsp;Follow</button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/profile5.jfif" alt="New York" style="width:100%;height: 100px;"
-                            class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>Priyanka Patil</b></p>
-                            <p>Junior CRM Developer</p>
-                            <button class="btn btn-primary" style="width: 100%;"><i
-                                    class="fa fa-user"></i>&nbsp;Follow</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/profile6.jfif" alt="New York" style="width:100%;height: 100px;"
-                            class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>Shardul Thakur</b></p>
-                            <p>Angular Developer</p>
-                            <button class="btn btn-primary" style="width: 100%;"><i
-                                    class="fa fa-user"></i>&nbsp;Follow</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/profile7.jfif" alt="New York" style="width:100%;height: 100px;"
-                            class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>Path Pujari</b></p>
-                            <p>Angular Developer</p>
-                            <button class="btn btn-primary" style="width: 100%;"><i
-                                    class="fa fa-user"></i>&nbsp;Follow</button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
+
+
         </div>
+    </div>
+</div>

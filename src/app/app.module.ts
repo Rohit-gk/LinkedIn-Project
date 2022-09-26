@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {NgToastModule} from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    NgToastModule
     
   ],
   providers: [],

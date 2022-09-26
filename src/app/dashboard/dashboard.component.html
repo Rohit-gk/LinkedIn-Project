@@ -21,10 +21,10 @@
                 <div class="dropbtn">Me</div>
                 <div class="dropdown-content">
                     <div><img src="assets/profile1.jfif" alt="" height="50" width="50" style="border-radius: 50%;">
-                        <p style="font-weight: bold;">Rohit Kalebag</p>
+                        <p style="font-weight: bold;"></p>
                     </div>
                     <div><button class="btn btn-outline-primary" style="width: 100%;" (click)="goToViewProfilePage()">View Profile</button></div><br>
-                    <a style="text-align: center;" routerLink="/"><button class="btn btn-danger">Sign out</button></a>
+                    <a style="text-align: center;" (click)="logout()"><button class="btn btn-danger">Sign out</button></a>
                 </div>
             </div>
         </li>

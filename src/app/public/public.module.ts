@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { PublicRoutingModule } from './public-routing.module';
+import { PublicComponent } from './public.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { DefaultPageComponent } from './default-page/default-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    PublicComponent,
     LoginComponent,
-    RegisterComponent,
-    DefaultPageComponent
+    RegisterComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    PublicRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ]
 })
-export class HomeModule { }
+export class PublicModule { }

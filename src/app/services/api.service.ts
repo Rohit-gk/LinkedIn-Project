@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -30,16 +30,14 @@ export class ApiService {
       `${environment.baseApiUrl}/Authenticate/register`,param)
   };
 
-  getAllPosts() {
+  AllPosts() {
     return this.http.get<any>(
-      'https://localhost:44329/api/Post',
+      `${environment.baseApiUrl}/Post`
     );
   }
 
   addPost(data: any) {
-    return this.http.post(
-      'https://localhost:44329/api/Post', data,
-    );
+    return this.http.post(`${environment.baseApiUrl}/Post`, data);
   }
 
   updatePost(data:any){
@@ -47,33 +45,69 @@ export class ApiService {
   }
 
   deletePost(id: any): Observable<any> {
-    var options = new HttpParams();
     return this.http.delete(`${environment.baseApiUrl}/Post/${id}`,)
   }
 
-  getAllProfiles() {
+  AllProfiles() {
     return this.http.get<any>(
-      'https://localhost:44329/api/Profile',
+      `${environment.baseApiUrl}/Profile`,
     );
   }
 
   addProfile(data: any) {
-    return this.http.post(
-      'https://localhost:44329/api/Profile', data,
-    );
+    return this.http.post(`${environment.baseApiUrl}/Profile`, data);
   }
   
   updateProfile(data: any): Observable<any> {
     return this.http.put(`${environment.baseApiUrl}/Profile`, data);
   }
 
-  // updateProfile(data:string){
-  //   return this.http.put(`${environment.baseApiUrl}/Profile`,data);
-  // }
-
   deleteProfile(userid: any): Observable<any> {
     var options = new HttpParams();
     return this.http.delete(`${environment.baseApiUrl}/Profile/${userid}`,);
   }
+
+  AllNonFriendConnection(){
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.get<any>(
+      `${environment.baseApiUrl}/FriendRequest/AllNonFriendConnection`,{headers}
+    );
+  }
+
+  SendFriendRequest(requestId:string){
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.get(`${environment.baseApiUrl}/FriendRequest/${requestId}`,{headers});
+  }
+
+  MyAllInvitaions(){
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.get<any>(
+      `${environment.baseApiUrl}/FriendRequest/GetFriendRequest`,{headers}
+    );
+  }
+
+  AcceptRejectRequest(requestId: any,status:string): Observable<any> {
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.put(`${environment.baseApiUrl}/FriendRequest?RequestId=${requestId}&status=${status}`, {headers});
+  }
+
+  AllJobs() {
+    return this.http.get<any>(
+      `${environment.baseApiUrl}/Job`,
+    );
+  }
+
+  addJob(data: any) {
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.post(`${environment.baseApiUrl}/Job`, data,{headers});
+  }
+
+  deleteJob(jobid: any):Observable<any> {
+    return this.http.delete(`${environment.baseApiUrl}/Job/${jobid}`,)
+  }
+
+  // deletePost(id: any): Observable<any> {
+  //   return this.http.delete(`${environment.baseApiUrl}/Post/${id}`,)
+  // }
 
 }

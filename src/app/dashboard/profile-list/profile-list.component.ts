@@ -19,7 +19,7 @@ export class ProfileListComponent implements OnInit {
   }
 
   getProfiles(){
-    this.api.getAllProfiles().subscribe(
+    this.api.AllProfiles().subscribe(
       response =>{
         this.profiles = response;
       }

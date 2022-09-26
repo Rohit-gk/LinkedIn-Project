@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { TokenService } from 'src/app/services/token.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private api: ApiService,
-    private token: TokenService
+    private token: TokenService,
+    private toaster:NgToastService
   ) { }
 
   ngOnInit() {
@@ -43,8 +45,15 @@ export class LoginComponent implements OnInit {
         let role = this.token.getRole();
         role === 'Admin'
           ? this.router.navigate(['admin/admindashboard'])
-          : this.router.navigate(['dashboard/posts']);
+          : this.router.navigate(['/dashboard/posts']);
         this.token.isLoggedIn.next(true);
+
+        this.toaster.success({
+          summary: 'Login Message',
+          detail: 'Login Success',
+          duration: 2000,
+
+        });
       }
     })
     console.log(this.token);

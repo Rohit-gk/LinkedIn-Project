@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from '../authentication.guard';
 import { AddProfileComponent } from './add-profile/add-profile.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
 import { CreatePostComponent } from './create-post/create-post.component';
@@ -18,18 +19,18 @@ const routes: Routes = [
   {
     path: '', component: DashboardComponent,
     children: [
-      { path: 'profile', component: ProfileComponent },
-      { path: 'addprofile', component: AddProfileComponent },
-      { path: 'updateprofile/:id', component: UpdateProfileComponent },
-      { path: 'requests', component: ReuestsComponent },
-      { path: 'jobs', component: JobsComponent },
-      { path: 'posts', component: PostComponent },
-      { path: 'mynetwork', component: MynetworkComponent },
+      { path: 'profile', component: ProfileComponent, },
+      { path: 'addprofile', component: AddProfileComponent , },
+      { path: 'updateprofile/:id', component: UpdateProfileComponent, },
+      { path: 'requests', component: ReuestsComponent ,},
+      { path: 'jobs', component: JobsComponent,  },
+      { path: 'posts', component: PostComponent , },
+      { path: 'mynetwork', component: MynetworkComponent ,},
       { path: 'viewallposts', component: ViewAllPostsComponent },
-      { path: 'allposts', component: AllPostsComponent },
-      { path: 'createpost', component: CreatePostComponent },
-      { path: 'profilelist', component: ProfileListComponent },
-      { path: 'updatepost/:id', component: UpdatePostComponent },
+      { path: 'allposts', component: AllPostsComponent , },
+      { path: 'createpost', component: CreatePostComponent , },
+      { path: 'profilelist', component: ProfileListComponent ,},
+      { path: 'updatepost/:id', component: UpdatePostComponent,  },
     ]
     
   }

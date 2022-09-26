@@ -35,7 +35,7 @@ export class UpdateProfileComponent implements OnInit {
     });
     
 
-    this.api.getAllProfiles().subscribe((getProfiledata) =>{
+    this.api.AllProfiles().subscribe((getProfiledata) =>{
       this.profileList = getProfiledata;
 
       for (let i=0; i< this.profileList.length; i++){
@@ -88,11 +88,9 @@ export class UpdateProfileComponent implements OnInit {
   onSubmit() {
     
     this.api.updateProfile(this.ngForm.value).subscribe(() => {
-        // this.toast.success({summary:UpdateProduct.message, detail:"Product Updated Successfully", duration:2000})
-        this.router.navigate(['/dashboard/profilelist'])   
+        this.router.navigate(['/dashboard/profile'])   
       },
       (err) => {
-        // this.toast.success({summary:"Error", detail:"Something Went Wrong", duration:2000})
       }
     );
   }

@@ -23,7 +23,7 @@ export class AllPostsComponent implements OnInit {
   }
 
   getPosts() {
-    this.api.getAllPosts().subscribe(
+    this.api.AllPosts().subscribe(
       response => {
         this.posts = response;
       }

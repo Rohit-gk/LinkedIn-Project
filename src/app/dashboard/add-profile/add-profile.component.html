@@ -58,19 +58,29 @@
                 <h4 class="card-body">Add Information</h4>
                 <div class="card-body">
 
-                    <form #form="ngForm" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="firstName" [(ngModel)]="profile.firstName"
-                                        placeholder="Enter first name">
+                                    <input type="text" class="form-control" name="firstName" formControlName="firstName"
+                                        placeholder="Enter first name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">First name is required</div>
+                                        <div *ngIf="f.firstName.errors.pattern">Only String accept here</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="lastName" [(ngModel)]="profile.lastName"
-                                        placeholder="Enter last name">
+                                    <input type="text" class="form-control" name="lastName" formControlName="lastName"
+                                        placeholder="Enter last name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">Last name is required</div>
+                                        <div *ngIf="f.lastName.errors.pattern">Only String accept here</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -78,14 +88,23 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="location" [(ngModel)]="profile.location"
-                                        placeholder="Enter profile image url">
+                                    <input type="text" class="form-control" name="location" formControlName="location"
+                                        placeholder="Enter profile image url"
+                                        [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+                                    <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                                        <div *ngIf="f.location.errors.required">Image url is required</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="mobile" [(ngModel)]="profile.mobile"
-                                        placeholder="Enter mobile number">
+                                    <input type="text" class="form-control" name="mobile" formControlName="mobile"
+                                        placeholder="Enter mobile number"
+                                        [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+                                    <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                                        <div *ngIf="f.mobile.errors.pattern">Enter 10 digit mobile number.</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -93,14 +112,23 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <input type="date" class="form-control" name="birthDate" [(ngModel)]="profile.birthDate"
-                                        placeholder="Select birth date">
+                                    <input type="date" class="form-control" name="birthDate" formControlName="birthDate"
+                                        placeholder="Select birth date" max="2022-09-26"
+                                        [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }" />
+                                        <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
+                                          <div *ngIf="f.birthDate.errors.required">Birth date is required</div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="email" [(ngModel)]="profile.email"
-                                        placeholder="Enter email">
+                                    <input type="text" class="form-control" name="email" formControlName="email"
+                                        placeholder="Enter email"
+                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -108,32 +136,40 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <textarea class="form-control" name="address" [(ngModel)]="profile.address"
-                                        placeholder="Enter address"></textarea>
+                                    <textarea class="form-control" name="address" formControlName="address"
+                                        placeholder="Enter address" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+                                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                        <div *ngIf="f.address.errors.required">Address is required</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="organization"
-                                        [(ngModel)]="profile.organization" placeholder="Enter organization">
+                                        formControlName="organization" placeholder="Enter organization name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.organization.errors }" />
+                                    <div *ngIf="submitted && f.organization.errors" class="invalid-feedback">
+                                        <div *ngIf="f.organization.errors.required">Organization name is required</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                                 <div class="mb-3">
-                                    <input type="file" class="form-control" name="uploadCV" [(ngModel)]="profile.uploadCV"
+                                    <input type="file" class="form-control" name="uploadCV" formControlName="uploadCV"
                                         placeholder="Upload file">
                                 </div>
-                            </div>
+                            </div> -->
                         </div><br>
-                       
+
                         <div class="form-row">
-                            <button class="btn btn-success mr-2" (click)="goProfilePage()"
-                                style="width: 20%;">Back</button>
-                            <button class="btn btn-secondary mr-2" style="width: 20%;" routerLink="/dashboard/profilelist">View Profile</button>
-                            <button class="btn btn-danger mr-2" style="width: 20%;">Cancel</button>
+                            <button class="btn btn-danger mr-2" (click)="goProfilePage()"
+                                style="width: 20%;">Cancel</button>
+                            <!-- <button class="btn btn-secondary mr-2" style="width: 20%;" routerLink="/dashboard/profilelist">View Profile</button> -->
+                            <!-- <button class="btn btn-danger mr-2" style="width: 20%;">Cancel</button> -->
                             <button class="btn btn-primary" style="width: 20%;">Submit</button>
                         </div>
 
@@ -150,7 +186,7 @@
 
 
 
-                    <!-- <form [formGroup]="registerForm">
+<!-- <form [formGroup]="registerForm">
                         <div class="form-row">
                             <div class="form-group col-6">
                                 <input type="text" formControlName="firstname" class="form-control"
